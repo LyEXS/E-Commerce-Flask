@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANAZONE - Accueil</title>
+  <link rel="stylesheet" href="../static/css/index.css">
+</head>
+
+<body>
+    <header>
+        <h1><em>ANA</em>ZONE</h1>
+        <nav>
+        <ul>
+            <li><a href="index.html" aria-current="page">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Most Solde items</h2>
+
+            {# Boucle Jinja2 : on itère sur la variable `produits` fournie par la view #}
+            {% if produits %}
+                {% for p in produits %}
+                <article>
+                    <img src="{{ p.get('image_url')}}" 
+                        alt="{{ p.get('nom_article') }}">
+                    <h3>{{ p.get('nom_article') }}</h3>
+                    <p>{{ p.get('description') }}</p>
+                    <p>{{ p.get('prix') }}€</p>
+                </article>
+                {% endfor %}
+
+            {% else %}
+                <p>Aucun produit trouvé pour le moment.</p>
+            {% endif %}
+        </section>
+
+        <aside>
+            <h2>Catégories</h2>
+            <ul>
+                <li><a href="#">Musique</a></li>
+                <li><a href="#">Anime</a></li>
+                <li><a href="#">Livres</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ANAZONE. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+
+
+ <!--remarque: faire sortir le aside du main, pas 
+ obliger d'une section 'items' qui regroupe les 
+ items article seul suffit>
